@@ -2,7 +2,8 @@
   <section>
     <div>
       <Logo :width="350"/>
-      <h1 class="title">NUXT
+      <h1 class="title">
+        NUXT
         <span class="green">JS</span>
       </h1>
       <h2 class="subtitle">Starter for CodeSandBox</h2>
@@ -11,6 +12,7 @@
           <IconLink/>
         </a>
         <NLink to="/about" class="button--grey">About</NLink>
+        <NLink to="/profile" class="button--grey">Profile</NLink>
       </div>
     </div>
   </section>
