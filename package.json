@@ -1,5 +1,5 @@
 {
-  "name": "codesandbox-nuxt",
+  "name": "nuxtjs-project",
   "version": "1.0.0",
   "description": "Nuxt starter for CodeSandBox",
   "author": "Nuxt.js Team",
@@ -15,5 +15,6 @@
     "@nuxt/http": "^0.3.0",
     "nuxt": "^2.5.1",
     "reqlim": "^0.0.0"
-  }
+  },
+  "keywords": []
 }
