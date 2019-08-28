@@ -2,7 +2,8 @@
   <div class="container">
     <div>
       <h1>About</h1>
-      <h2>Hello from
+      <h2>
+        Hello from
         <span class="name">{{ name }}</span>.
       </h2>
       <p>
@@ -14,6 +15,18 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "About",
+      meta: [
+        {
+          hid: "About",
+          name: "About",
+          content: "About"
+        }
+      ]
+    };
+  },
   asyncData() {
     return {
       name: process.server ? "server" : "client"
