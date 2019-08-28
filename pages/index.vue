@@ -12,6 +12,7 @@
           <IconLink/>
         </a>
         <NLink to="/about" class="button--grey">About</NLink>
+        <NLink to="/jokes" class="button--grey">Jokes</NLink>
         <NLink to="/profile" class="button--grey">Profile</NLink>
       </div>
     </div>
@@ -23,6 +24,18 @@ import Logo from "~/components/Logo.vue";
 import IconLink from "~/components/IconLink.vue";
 
 export default {
+  head() {
+    return {
+      title: "Home",
+      meta: [
+        {
+          hid: "Home",
+          name: "Home",
+          content: "Home"
+        }
+      ]
+    };
+  },
   components: {
     Logo,
     IconLink

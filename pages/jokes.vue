@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div>
-      <h1>Profile</h1>
+      <h1>Jokes</h1>
       <h2>
         Hello from
         <span class="name">{{ name }}</span>.
+        <Joke v-for="joke in jokes" :key="joke.id" :id="joke.id" :joke="joke.joke"/>
       </h2>
       <p>
         <NLink to="/" class="button--grey">Back home</NLink>
@@ -14,15 +15,40 @@
 </template>
 
 <script>
+import axios from "axios";
+import Joke from "../components/Joke";
 export default {
+  components: {
+    Joke
+  },
+  data() {
+    return {
+      jokes: []
+    };
+  },
+  async created() {
+    const config = {
+      headers: {
+        Accept: "application/json"
+      }
+    };
+    try {
+      const res = await axios.get("https://icanhazdadjoke.com/search", config);
+
+      this.jokes = res.data.results;
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  },
   head() {
     return {
-      title: "Profile",
+      title: "Jokes",
       meta: [
         {
-          hid: "Profile",
-          name: "Profile",
-          content: "Profile"
+          hid: "Jokes",
+          name: "Jokes",
+          content: "Jokes"
         }
       ]
     };
