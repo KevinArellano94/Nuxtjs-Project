@@ -16,7 +16,7 @@
 
 <script>
 import axios from "axios";
-import Joke from "../components/Joke";
+import Joke from "../../components/Joke";
 export default {
   components: {
     Joke
