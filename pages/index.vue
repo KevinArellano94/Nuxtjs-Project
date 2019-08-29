@@ -6,7 +6,7 @@
         NUXT
         <span class="green">JS</span>
       </h1>
-      <h2 class="subtitle">Starter for CodeSandBox</h2>
+      <h2 class="subtitle">Starter for CodeSandBox Application</h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation
           <IconLink/>
