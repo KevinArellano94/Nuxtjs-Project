@@ -25,6 +25,10 @@ import IconLink from "~/components/IconLink.vue";
 import "~/pages/About";
 
 export default {
+  components: {
+    Logo,
+    IconLink
+  },
   head() {
     return {
       title: "Home",
@@ -36,10 +40,6 @@ export default {
         }
       ]
     };
-  },
-  components: {
-    Logo,
-    IconLink
   }
 };
 </script>

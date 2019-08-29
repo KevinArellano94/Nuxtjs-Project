@@ -76,6 +76,11 @@ export default {
         }
       ]
     };
+  },
+  asyncData() {
+    return {
+      name: process.server ? "server" : "client"
+    };
   }
 };
 </script>
