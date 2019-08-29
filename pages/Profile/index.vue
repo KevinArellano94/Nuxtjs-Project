@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <h1>Profile</h1>
+      <h1>Profile?</h1>
       <h2>
         Hello from
         <span class="name">{{ name }}</span>.

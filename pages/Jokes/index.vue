@@ -1,16 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <h1>Jokes</h1>
+      <h1>Jokes?</h1>
       <h2>
-        Sup/Hello from
+        Hello from
         <span class="name">{{ name }}</span>.
         <SearchJokes v-on:search-text="searchText"/>
-        <ul>
-          <li>
-            <Joke v-for="joke in jokes" :key="joke.id" :id="joke.id" :joke="joke.joke"/>
-          </li>
-        </ul>
+        <Joke v-for="joke in jokes" :key="joke.id" :id="joke.id" :joke="joke.joke"/>
       </h2>
       <p>
         <NLink to="/" class="button--grey">Back home</NLink>
