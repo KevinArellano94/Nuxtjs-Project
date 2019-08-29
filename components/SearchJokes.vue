@@ -1,8 +1,8 @@
 <template>
-  <from @submit.prevent="onSubmit">
+  <form @submit.prevent="onSubmit">
     <input type="text" v-model="text" placeholder="Search Jokes...">
     <input type="submit" value="Search Jokes">
-  </from>
+  </form>
 </template>
 
 <script>
