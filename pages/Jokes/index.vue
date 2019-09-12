@@ -1,13 +1,25 @@
 <template>
-  <div class="container">
+  <div>
     <div>
       <h1>Jokes?</h1>
       <h2>
         Hello from
         <span class="name">{{ name }}</span>.
         <SearchJokes v-on:search-text="searchText"/>
-        <Joke v-for="joke in jokes" :key="joke.id" :id="joke.id" :joke="joke.joke"/>
       </h2>
+    </div>
+    <br>
+    <div>
+      <h4>
+        <ul style="list-style-type:none">
+          <li v-for="joke in jokes" :key="joke.id">
+            <Joke key="joke.id" :id="joke.id" :joke="joke.joke"/>
+          </li>
+        </ul>
+      </h4>
+    </div>
+
+    <div>
       <p>
         <NLink to="/" class="button--grey">Back home</NLink>
       </p>
