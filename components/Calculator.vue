@@ -80,18 +80,22 @@ export default {
       this.operatorClicked = true;
     },
     divide() {
+      this.append("/");
       this.operator = (a, b) => a / b;
       this.setPrevious();
     },
     times() {
+      this.append("X");
       this.operator = (a, b) => a * b;
       this.setPrevious();
     },
     minus() {
+      this.append("-");
       this.operator = (a, b) => a - b;
       this.setPrevious();
     },
     add() {
+      this.append("+");
       this.operator = (a, b) => a + b;
       this.setPrevious();
     },
