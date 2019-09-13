@@ -17,7 +17,7 @@
       <h2 class="subtitle">Starter for CodeSandBox Application</h2>
     </div>
 
-    <div>
+    <div class="container-left">
       <ul style="list-style-type:none">
         <li>
           <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation

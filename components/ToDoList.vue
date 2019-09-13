@@ -9,10 +9,12 @@
     >
     <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
       <div class="todo-item-left">
+        <input type="checkbox" v-model="todo.completed">
         <div
           v-if="!todo.editing"
-          @dblclick="editToDo(todo)"
+          @click="editToDo(todo)"
           class="todo-item-label"
+          :class="{ completed: todo.completed }"
         >{{ todo.title }}</div>
         <input
           v-else
@@ -21,9 +23,20 @@
           v-model="todo.title"
           @blur="doneEdit(todo)"
           @keyup.enter="doneEdit(todo)"
+          @keyup.esc="cancelEdit(todo)"
+          v-focus
         >
         <div class="remove-item" @click="removeToDo(index)">&times;</div>
       </div>
+    </div>
+    <div class="extra-container">
+      <div>
+        <label>
+          <input type="checkbox" :checked="!anyRemaining" @change="checkAllToDos">
+          Check All
+        </label>
+      </div>
+      <div>{{ remaining }} items left</div>
     </div>
   </div>
 </template>
@@ -54,6 +67,7 @@ export default {
     return {
       message: "Welcome to Your Vue.JS App",
       newToDo: "",
+      beforeEditCache: "",
       todos: [
         {
           id: 1,
@@ -70,6 +84,21 @@ export default {
       ]
     };
   },
+  computed: {
+    remaining() {
+      return this.todos.filter(todo => !todo.completed).length;
+    },
+    anyRemaining() {
+      return this.remaining !== 0;
+    }
+  },
+  directives: {
+    focus: {
+      inserted: function(el) {
+        el.focus();
+      }
+    }
+  },
   methods: {
     addToDo() {
       if (this.newToDo.trim().length === 0) {
@@ -84,18 +113,36 @@ export default {
       this.idForToDo++;
     },
     editToDo(todo) {
+      this.beforeEditCache = todo.title;
       todo.editing = true;
     },
     doneEdit(todo) {
+      if (todo.title.trim().length === 0) {
+        return;
+      }
+      todo.editing = false;
+    },
+    cancelEdit(todo) {
+      todo.title = this.beforeEditCache;
       todo.editing = false;
     },
     removeToDo(index) {
       this.todos.splice(index, 1);
+    },
+    checkAllToDos() {
+      this.todos.forEach(todo => (todo.completed = event.target.checked));
     }
   }
 };
 </script>
 <style lang="scss">
+* {
+  box-sizing: border-box;
+}
+.container {
+  max-height: 600px;
+  margin: 0 auto;
+}
 .todo-input {
   font-size: 24px;
   width: 100%;
@@ -113,6 +160,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.todo-item-left {
+  display: flex;
+  align-items: center;
 }
 .todo-item-edit {
   font-size: 24px;
@@ -133,5 +184,12 @@ export default {
   &:hover {
     color: black;
   }
+}
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+.active {
+  background: lightgreen;
 }
 </style>
