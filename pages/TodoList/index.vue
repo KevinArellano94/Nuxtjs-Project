@@ -17,7 +17,10 @@
         v-model="newToDo"
         @keyup.enter="addToDo"
       >
-      <div v-for="todo in todos" :key="todo.id" class="todo-item">{{ todo.title }}</div>
+      <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
+        <div>{{ todo.title }}</div>
+        <div class="remove-item" @click="removeToDo(index)">&times;</div>
+      </div>
     </div>
   </div>
 </template>
@@ -74,12 +77,16 @@ export default {
       });
       this.newToDo = "";
       this.idForToDo++;
+    },
+    removeToDo(index) {
+      this.todos.splice(index, 1);
     }
   }
 };
 </script>
 <style lang="scss">
 .todo-input {
+  font-size: 24px;
   width: 100%;
   padding: 10px 18px;
   font-size: 18px;
@@ -87,6 +94,20 @@ export default {
 
   &:focus {
     outline: 0;
+  }
+}
+.todo-item {
+  font-size: 24px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.remove-item {
+  cursor: pointer;
+  margin-left: 14px;
+  &:hover {
+    color: black;
   }
 }
 </style>
