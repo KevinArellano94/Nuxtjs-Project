@@ -18,8 +18,15 @@
         @keyup.enter="addToDo"
       >
       <div v-for="(todo, index) in todos" :key="todo.id" class="todo-item">
-        <div>{{ todo.title }}</div>
-        <div class="remove-item" @click="removeToDo(index)">&times;</div>
+        <div class="todo-item-left">
+          <div
+            v-if="!todo.editing"
+            @dblclick="editToDo(todo)"
+            class="todo-item-label"
+          >{{ todo.title }}</div>
+          <input v-else class="todo-item-edit" type="text" v-model="todo.title">
+          <div class="remove-item" @click="removeToDo(index)">&times;</div>
+        </div>
       </div>
     </div>
   </div>
@@ -55,12 +62,14 @@ export default {
         {
           id: 1,
           title: "Finish Vue Screenshot",
-          completed: false
+          completed: false,
+          editing: false
         },
         {
           id: 2,
           title: "Take over the world",
-          completed: false
+          completed: false,
+          editing: false
         }
       ]
     };
@@ -77,6 +86,9 @@ export default {
       });
       this.newToDo = "";
       this.idForToDo++;
+    },
+    editToDo(todo) {
+      todo.editing = true;
     },
     removeToDo(index) {
       this.todos.splice(index, 1);
@@ -102,6 +114,19 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.todo-item-edit {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-left: 12px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+
+  &:focus {
+    outline: none;
+  }
 }
 .remove-item {
   cursor: pointer;
