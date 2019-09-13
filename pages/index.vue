@@ -1,7 +1,7 @@
 <template>
   <section>
     <div>
-      <b-alert show>Default Alert</b-alert>
+      <p>To Do List - Check out the cool functionality it has and how it changes weekly!</p>
     </div>
 
     <div class="container">
