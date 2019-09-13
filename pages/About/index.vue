@@ -34,3 +34,17 @@ export default {
   }
 };
 </script>
+<style scoped>
+h1 {
+  font-weight: 400;
+}
+.name {
+  color: #00C48D;
+}
+p {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+</style>

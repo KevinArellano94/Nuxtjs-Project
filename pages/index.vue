@@ -34,6 +34,9 @@
           <NLink to="/profile" class="button--grey">Profile</NLink>
         </li>
         <li>
+          <NLink to="/calculator" class="button--grey">Calculator</NLink>
+        </li>
+        <li>
           <NLink to="/vue" class="button--grey">Vue</NLink>
         </li>
       </ul>
