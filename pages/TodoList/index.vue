@@ -25,7 +25,8 @@
 <script>
 export default {
   names: "todo-list",
-  idForTodo: 3,
+  idForToDo: 3,
+  newToDo: "",
   head() {
     return {
       title: "To Do List",
@@ -57,21 +58,22 @@ export default {
           id: 2,
           title: "Take over the world",
           completed: false
-        },
+        }
       ]
     };
   },
   methods: {
     addToDo() {
-      alert("adding");
+      if (this.newToDo.trim().length === 0) {
+        return;
+      }
       this.todos.push({
-        id: this.idForTodo,
-        title: this.newTodo,
+        id: this.idForToDo,
+        title: this.newToDo,
         completed: false
       });
-      this.newTodo = "";
-      this.idForTodo++;
-      alert("added");
+      this.newToDo = "";
+      this.idForToDo++;
     }
   }
 };
