@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <Nuxt/>
-  </div>
+  <Nuxt/>
 </template>
 
 <style>
@@ -24,15 +22,13 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
 .container {
-  min-height: 100vh;
+  min-height: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-
 .button--green {
   display: inline-block;
   border-radius: 4px;
