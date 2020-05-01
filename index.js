@@ -1,10 +1,15 @@
-import Vue from "vue";
-import BootstrapVue from "bootstrap-vue";
-import App from "./App";
+<template>
+  <html-fetcher url="/your/static/content.html"/>
+</template>
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+<script>
+import axios from 'axios'
 
-Vue.use(BootstrapVue);
-
-new Vue({ el: "#app", render: h => h(App) });
+Vue.component('html-fetcher', {
+  template: '<div>Loading…</div>',
+  props: ['url'],
+  mounted () {
+    axios.get(this.url).then(({ data }) => this.$el.outerHTML = data)
+  }
+})
+</script>

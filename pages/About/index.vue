@@ -6,9 +6,17 @@
         Hello from
         <span class="name">{{ name }}</span>.
       </h2>
+
       <p>
         <NLink to="/" class="button--grey">Back home</NLink>
       </p>
+      
+      <div style="float: left;">
+        <pre>
+          Help
+        </pre>
+      </div>
+
     </div>
   </div>
 </template>
@@ -31,6 +39,14 @@ export default {
     return {
       name: process.server ? "server" : "client"
     };
+  },
+  data() {
+    return {
+      template: "template",
+      div: "div",
+
+      class_: "class = "
+    }
   }
 };
 </script>
@@ -40,6 +56,15 @@ h1 {
 }
 .name {
   color: #00C48D;
+}
+.HTML_tag {
+  color: gray;
+}
+.HTML_document {
+  color: palevioletred;
+}
+.class_ {
+  color: orange;
 }
 p {
   margin-top: 10px;
